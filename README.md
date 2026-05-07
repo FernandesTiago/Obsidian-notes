@@ -1,6 +1,7 @@
-# Study Vault
+# Vault Workflow
 
-Personal vault for study notes, technical references, and ongoing learnings.
+Personal knowledge vault. Split by intent, not topic.
+For study notes, technical references, and ongoing learnings.
 
 ## Purpose
 
@@ -8,20 +9,27 @@ Centralize knowledge acquired throughout my tech learning journey, focused on lo
 
 ## Structure
 
-- **`00-inbox/`** — Quick notes and drafts before organizing
-- **`networking/`** — Network fundamentals, protocols, troubleshooting
-- **`linux/`** — Configs, commands, dotfiles, and administration
-- **`homelab/`** — Raspberry Pi, servers, home infrastructure
-- **`cybersec/`** — Security, pentesting, CTF writeups
-- **`dev/`** — Programming, snippets, patterns, and tools
+- **Meta/** - about the vault itself
+- **Studies/** - what I'm learning (CompTIA, CyberSec concepts, Python, Linux fundamentals)
+- **Runbooks/** - what I configured on my own machines (Pi, OpenWRT, Linux setups). If something breaks, this is where the recovery steps live.
+- **Inbox/** - quick captures before they find a permanent home
 
-## Principles
+## Conventions
 
-- **Always in my own words** — copying doesn't stick, transforming does
-- **Concepts > commands** — understand the why before the how
-- **Link related concepts** across notes when relevant
-- **Review with the Feynman method** — if I can't explain it, I don't understand it
+- Real IPs, ports, secrets → only in `Runbooks/00-Private/` (gitignored)
+- Public notes use placeholders like `<PI_IP>`, `<VPN_PORT>`
+- Each runbook has: Objective, Setup, Verify, Troubleshoot, Revert
+- Link generously between notes with `[[note-name]]`
 
 ## Sync
 
-Synced via Git for cross-device access and version history.
+- Vault is a Git repo, pushed to private GitHub
+- Desktop + notebook: `obsidian-git` plugin auto-commits every 30min
+- Mobile: not configured yet (planned: self-host on Pi later)
+
+## Daily flow
+
+1. Start session → check `Meta/TODO.md`
+2. Capture rough ideas → `00-Inbox/`
+3. After completing a config → write/update its runbook same day
+4. Commit + push when leaving
